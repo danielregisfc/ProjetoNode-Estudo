@@ -1,0 +1,31 @@
+{
+  "name": "setup-nodejs",
+  "version": "0.0.1",
+  "description": "Projeto de Demonstração",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danielregisfc/ProjetoNode-Estudo.git"
+  },
+  "keywords": [
+    "nodejs",
+    "express",
+    "demo"
+  ],
+  "author": "Daniel Régis <danielregisfc@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/danielregisfc/ProjetoNode-Estudo/issues"
+  },
+  "homepage": "https://github.com/danielregisfc/ProjetoNode-Estudo#readme",
+  "dependencies": {
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "jest": "^27.3.1"
+  }
+}
