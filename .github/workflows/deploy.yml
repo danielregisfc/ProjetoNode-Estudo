@@ -31,11 +31,8 @@ jobs:
           mv /home/nor/workspace/projetonode.tar.gz /home/nor/workspace/projetonode/
           cd /home/nor/workspace/projetonode
           tar -xzf projetonode.tar.gz
-          rm -f projetonode.tar.gz
-          cp /home/nor/workspace/env/llm/.env /home/nor/workspace/projetonode/
           docker-compose down
           docker-compose up -d --build
-          rm -rf /home/nor/workspace/projetonode
         EOF
     
     - name: Cleanup
