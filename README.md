@@ -60,3 +60,7 @@ license: (ISC)
 
 # Cria e inicializar os contêineres
 docker-compose up --build
+
+# Caso necessário instale o express antes
+npm install express
+
