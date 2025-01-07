@@ -17,13 +17,14 @@ jobs:
 
       - name: Deploy to server
         run: |
-          ssh -o StrictHostKeyChecking=no nor@200.17.32.223
+          ssh -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }}
+          mkdir -p /home/nor/workspace/teste-githubactions
+          EOF
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
-      - name: List files in the repository
-        run: |
-          mkdir teste
+      
+    
     
       
       
