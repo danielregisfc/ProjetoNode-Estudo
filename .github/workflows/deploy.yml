@@ -18,7 +18,9 @@ jobs:
       - name: Deploy to server
         run: |
           ssh -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }}
-          mkdir -p /home/nor/workspace/teste-githubactions
+          cd /home/nor
+          touch teste.txt
+          echo "Enviando Mensagem"
           EOF
       - name: List files in the repository
         run: |
