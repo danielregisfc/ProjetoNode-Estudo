@@ -5,37 +5,20 @@ on: [push]
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+
+  steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+  
+      - name: Set up SSH
+        uses: webfactory/ssh-agent@v0.5.3
+        with:
+          ssh-private-key: ${{ secrets.SERVER_SSH_PRIVATE_KEY }}
+
+      - name: Deploy to server
+        run: |
+          ssh -o StrictHostKeyChecking=no nor@200.17.32.223
+          mkdir teste
     
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-    
-    - name: Prepare SSH key
-      run: |
-        install -m 600 -D /dev/null ~/.ssh/id_rsa
-        echo "${{ secrets.SERVER_SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
-        chmod 600 ~/.ssh/id_rsa
-        ssh-keyscan -p ${{ secrets.SERVER_SSH_PORT }} -H ${{ secrets.SERVER_HOST }} >> ~/.ssh/known_hosts
-        
-    - name: Compress the repository
-      run: |
-        git archive --format=tar.gz --output=projetonode.tar.gz HEAD
-        
-    - name: Copy to server
-      run: |
-        scp -i ~/.ssh/id_rsa -P ${{ secrets.SERVER_SSH_PORT }} projetonode.tar.gz ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }}:/home/nor/workspace/projetonode.tar.gz
-    - name: Deploy to Server
-      run: |
-        ssh -i ~/.ssh/id_rsa -p ${{ secrets.SERVER_SSH_PORT }} ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} << EOF
-          mkdir -p /home/nor/workspace/projetonode
-          mv /home/nor/workspace/projetonode.tar.gz /home/nor/workspace/projetonode/
-          cd /home/nor/workspace/projetonode
-          tar -xzf projetonode.tar.gz
-          docker-compose down
-          docker-compose up -d --build
-        EOF
-    
-    - name: Cleanup
-      run: |
-        rm -f ~/.ssh/id_rsa
-      if: always()
+      
+      
