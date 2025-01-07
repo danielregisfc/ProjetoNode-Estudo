@@ -18,6 +18,11 @@ jobs:
       - name: Deploy to server
         run: |
           ssh -o StrictHostKeyChecking=no nor@200.17.32.223
+      - name: List files in the repository
+        run: |
+          ls ${{ github.workspace }}
+      - name: List files in the repository
+        run: |
           mkdir teste
     
       
