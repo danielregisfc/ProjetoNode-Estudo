@@ -15,12 +15,7 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.SERVER_SSH_PRIVATE_KEY }}
 
-      - name: Deploy to server
-        run: |
-          ssh -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} << EOF
-          cd /home/nor
-          touch teste.txt
-          EOF
+      
       - name: Compress the repository
         run: |
           git archive --format=tar.gz --output=projeto.tar.gz HEAD
@@ -28,3 +23,13 @@ jobs:
       - name: Transfer file to server
         run: |
           scp -o StrictHostKeyChecking=no projeto.tar.gz ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }}:/home/nor/
+      
+      - name: Deploy to server
+        run: |
+          ssh -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} << EOF
+          cd /home/nor/workspace
+          mkdir projetonode
+          cd projetonode/
+          sudo tar -xf projeto.tar.gz
+          touch teste.txt
+          EOF
