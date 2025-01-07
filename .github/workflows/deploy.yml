@@ -1,0 +1,13 @@
+name: Automatizacao
+
+on: 
+  push:
+
+jobs:
+  automato:
+    runs-on: ubuntu-latest
+    steps: 
+    - name: Checkout Code
+      uses: actions/checkout@v4
+    - name: Prepare
+      run: echo 'Teste Action - Name Prepare'
