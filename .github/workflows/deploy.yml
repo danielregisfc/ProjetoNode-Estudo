@@ -22,7 +22,7 @@ jobs:
       
       - name: Transfer file to server
         run: |
-          scp -o StrictHostKeyChecking=no projeto.tar.gz ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }}:/home/nor/workspace/projetonode
+          scp -o StrictHostKeyChecking=no projeto.tar.gz ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }}:/home/nor/
       
       - name: Execute SSH commands on remote server
         run: |
