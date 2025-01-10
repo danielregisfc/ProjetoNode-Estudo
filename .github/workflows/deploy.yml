@@ -28,7 +28,6 @@ jobs:
         run: |
           ssh -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} << EOF
           cd /home/nor/workspace/projetonode
-          cd projetonode/
           tar -xf projeto.tar.gz
           rm -rf projeto.tar.gz
           touch teste.txt
