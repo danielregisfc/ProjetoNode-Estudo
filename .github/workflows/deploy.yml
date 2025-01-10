@@ -34,5 +34,7 @@ jobs:
           cd /home/nor/workspace/projetonode
           tar -xf projeto.tar.gz
           rm -rf projeto.tar.gz
+          docker-compose down
+          docker-compose up -d --build
          
           EOF
