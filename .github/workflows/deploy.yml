@@ -24,7 +24,7 @@ jobs:
       
       - name: Transfer file to server
         run: |
-          scp -i ~/.ssh/id_rsa -P ${{ secrets.SERVER_SSH_PORT }} projeto.tar.gz ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }}:/home/nor/workspace/projetonode/projeto.tar.gz
+          scp -i ~/.ssh/id_rsa -P ${{ secrets.SERVER_SSH_PORT }} projeto.tar.gz ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }}:/home/nor/projeto.tar.gz
           #scp -o StrictHostKeyChecking=no projeto.tar.gz ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }}:/home/nor/
       
       - name: Execute SSH commands on remote server
