@@ -8,7 +8,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
   
       - name: Set up SSH
         uses: webfactory/ssh-agent@v0.5.3
@@ -22,14 +22,14 @@ jobs:
       
       - name: Transfer file to server
         run: |
-          scp -o StrictHostKeyChecking=no projeto.tar.gz ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }}:/home/nor/
+          scp -o StrictHostKeyChecking=no projeto.tar.gz ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }}:/home/nor/workspace/projetonode
       
-      - name: Deploy to server
+      - name: Execute SSH commands on remote server
         run: |
           ssh -o StrictHostKeyChecking=no ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} << EOF
-          cd /home/nor/workspace
-          mkdir projetonode
+          cd /home/nor/workspace/projetonode
           cd projetonode/
           tar -xf projeto.tar.gz
+          rm -rf projeto.tar.gz
           touch teste.txt
           EOF
