@@ -30,6 +30,6 @@ jobs:
           cd /home/nor/workspace
           mkdir projetonode
           cd projetonode/
-          sudo tar -xf projeto.tar.gz
+          tar -xf projeto.tar.gz
           touch teste.txt
           EOF
